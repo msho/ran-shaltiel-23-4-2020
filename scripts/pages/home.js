@@ -1,7 +1,7 @@
 import PageBase from "./pageBase.js";
 
 import { setCurrentWeatherToDom, setDailyWeatherToDom } from "../helpers/temperture.js";
-import { attr, appendTemplate, newElem } from "../helpers/dom.js";
+import { appendTemplate, newElem } from "../helpers/dom.js";
 import Loader from "../helpers/loader.js";
 
 import getDefaultLocation from "../apis/currentLocation.js";
@@ -106,7 +106,16 @@ class Home extends PageBase {
 
         this.handleToggleFav();
 
-        this.accuWeather.getCurrentWeather(key).then(obj => this.setCurrentWeather(obj[0]));
+        const currentWeatherLoader = new Loader();
+        currentWeatherLoader.setLoaderToElem(this.domResultTemp.parentElement);
+
+        this.accuWeather.getCurrentWeather(key)
+            .then(obj => {
+                this.setCurrentWeather(obj[0]);
+                currentWeatherLoader.clearLoader();
+
+            }).catch(currentWeatherLoader.clearLoader);
+
 
         this.accuWeather.getForecast(key).then(obj => this.setForecast(obj));
 
@@ -129,7 +138,6 @@ class Home extends PageBase {
     } // setCurrentWeather
 
     setForecast(obj) {
-        console.log(obj);
         if (!obj || !obj.DailyForecasts) {
             return;
         }

@@ -1,0 +1,41 @@
+.toggle, .toggle * {
+    transition: all 0.5s;
+}
+#container > .menu {
+    grid-area:menu;
+    background-color: rgba(221,221,221, 0.5);
+    border-radius: 2%;
+    position: relative;
+}
+
+#container > .menu > #showHideMenu {
+    position: absolute;
+    cursor: pointer;
+    left: 8rem;
+    background-color: rgba(150, 220, 50, 0.5);
+    border-radius: 100%;
+    font-size: 3.5rem;
+    font-family: monospace;
+    transition: all 2s;
+}
+
+#container > .menu > div:first-of-type {
+    margin-top: 2rem;
+}
+
+#container.mini-menu {
+    grid-template-columns: 3rem auto 12rem;
+}
+
+#container.mini-menu > .menu > #showHideMenu {
+    left: 2rem;
+    transform: rotate(180deg);
+}
+
+#container.mini-menu > .menu > .toggle {
+    padding-left: 0;
+}
+
+#container.mini-menu > .menu > .toggle > h3 {
+    font-size: 0;
+}

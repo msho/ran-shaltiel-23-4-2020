@@ -11,7 +11,6 @@
 
 #home>.search-container {
     position: relative;
-    /* TODO: add search icon */
 }
 
 #home>.search-container input {
@@ -48,24 +47,4 @@
 #home > .result-container > .result-desciption{
     font-size: 3rem;
     padding: 3rem;
-}
-
-.weather-list {
-    padding-top: 1rem;
-    display: flex;
-    place-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.weather-list > div {
-    min-width: 13rem;
-    margin-bottom: 1rem;
-}
-
-.weather-list > div > div {
-    padding: 1.5rem;
-}
-
-.weather-list > div:nth-child(2n) {
-    background-color: rgba(221,221,221, 0.5);
 }

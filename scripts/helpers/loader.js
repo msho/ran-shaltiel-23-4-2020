@@ -27,9 +27,6 @@ class Loader {
         this.loaderInterval((icon) => {
             this.domLoaderPre.innerHTML = icon;
         });
-
-
-        
     }
 
     * iconGenerator() {

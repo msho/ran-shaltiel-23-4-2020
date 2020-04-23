@@ -1,15 +1,7 @@
-/*** 
- * todos
- * * theme
- * loading
- * animation (toggle, new text, options (minimize<hide toggle headers>))
- * history managment
- * change search, fav to widget?
- * */ 
-
 'use strict';
 
-import Config, {defaultConfig} from './config.js';
+import Config, { defaultConfig } from './config.js';
+import HistoryState from './historyState.js';
 
 import Toggle from './widgets/toggle.js';
 
@@ -25,9 +17,11 @@ class WeatherTask {
     static domContainerId = 'container'
 
     constructor() {
-        this.domContainer = document.getElementById(WeatherTask.domContainerId);
+        this.domGrid = document.getElementById(WeatherTask.domContainerId);
 
         this.config = new Config();
+
+        this.historyState = new HistoryState(this);
 
         this.favStorage = new FavStorage();
 
@@ -35,21 +29,27 @@ class WeatherTask {
 
         this.initPages();
 
-        this.dicPages[defaultConfig.nav].show();
-        this.toggleHandler = new Toggle(this.domContainer, this.config);
-        this.toggleHandler.selectToggle('nav', defaultConfig.nav);
-
+        this.initToggle();
 
         (this.dicPages[HomePage.PageId]).setToggleHandler(this.toggleHandler);
 
         this.handleEvents();
 
+        this.handleMenu();
+
     }
 
     initPages() {
         this.dicPages = {};
-        this.dicPages[HomePage.PageId] = new HomePage(this.domContainer, this.config, this.favStorage);
-        this.dicPages[FavPage.PageId] = new FavPage(this.domContainer, this.config, this.favStorage);
+        this.dicPages[HomePage.PageId] = new HomePage(this.domGrid, this.config, this.favStorage);
+        this.dicPages[FavPage.PageId] = new FavPage(this.domGrid, this.config, this.favStorage);
+
+        this.dicPages[defaultConfig.nav].show();
+    }
+
+    initToggle() {
+        this.toggleHandler = new Toggle(this.domGrid, this.config);
+        this.toggleHandler.selectToggle('nav', defaultConfig.nav);
     }
 
     handleEvents() {
@@ -63,18 +63,33 @@ class WeatherTask {
         this.config.onThemeChanged = val => this.changeTheme(val);
     }
 
-    changePage(strPage) {
+    handleMenu() {
+        document.getElementById('showHideMenu').onclick = () => {
+            const strSmallMenuClassName = 'mini-menu';
+            if (this.domGrid.classList.contains(strSmallMenuClassName)) {
+                this.domGrid.classList.remove(strSmallMenuClassName);
+            } else {
+                this.domGrid.classList.add(strSmallMenuClassName);
+            }
+        } // showHideMenu click
+    }
+
+    changePage(strPage, ignoreState) {
+        if (!ignoreState) {
+            this.historyState.onPageChange(strPage);
+        }
+
         this.dicPages[strPage].show();
     }
 
     changeElementsScale(scale) {
-        changeAllElementsScale(this.domContainer, scale);
+        changeAllElementsScale(this.domGrid, scale);
     }
 
     changeTheme(theme) {
-        this.domContainer.classList.remove('dark')
-        this.domContainer.classList.remove('light')
-        this.domContainer.classList.add(theme);
+        this.domGrid.classList.remove('dark')
+        this.domGrid.classList.remove('light')
+        this.domGrid.classList.add(theme);
     }
 
 } // WeatherTask

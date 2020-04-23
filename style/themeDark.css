@@ -1,0 +1,32 @@
+#container.dark, 
+#container.dark > .main, 
+#container.dark > .footer {
+    color: snow;
+    background-color: black;
+}
+
+#container.dark input {
+    color: blue;
+    background-color: darkgray;
+}
+
+#container.dark #home> .result-container> .result-header {
+    background-color: rgba(221,221,221, 0.1);
+}
+
+#container.dark > .header {
+    border-bottom: 1px solid #aaaaaa;
+    background-color: gray;
+}
+
+#container.dark > .menu {
+    background-color: gray;
+}
+
+#container.dark > .menu > #showHideMenu {
+    background-color: rgba(150, 220, 50, 0.5);
+}
+
+#container.dark .weather-list > div:nth-child(2n) {
+    background-color: rgba(100,100,100, 0.5);
+}
