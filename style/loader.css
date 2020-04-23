@@ -1,0 +1,13 @@
+.loader {
+    position: absolute;
+    z-index: 9;
+}
+
+.loader > pre {
+    font-family: monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /*border: 1px solid #eee;*/
+    display: inline-block;
+    margin: .25rem;
+}

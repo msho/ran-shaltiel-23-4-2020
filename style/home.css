@@ -1,0 +1,71 @@
+#home {
+    width: 100%;
+}
+
+#home>div {
+    text-align: center;
+    ;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#home>.search-container {
+    position: relative;
+    /* TODO: add search icon */
+}
+
+#home>.search-container input {
+    width: calc(100% - 3rem);
+    font-size: 2rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 3px;
+    margin: 0 0 1rem 0;
+    font-style: italic;
+}
+
+#home>.result-container>.result-header {
+    display: flex;
+    justify-content: space-between;
+
+    background-color: rgba(221,221,221, 0.5);
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+#home>.result-container>.result-header>.basic-info {
+    display: flex;
+}
+
+#home>.result-container>.result-header>.basic-info>.img {
+    display: flex;
+}
+
+#home>.result-container>.result-header>.basic-info>.img > img {
+    align-self: center;
+    height: 10rem;
+}
+
+#home > .result-container > .result-desciption{
+    font-size: 3rem;
+    padding: 3rem;
+}
+
+.weather-list {
+    padding-top: 1rem;
+    display: flex;
+    place-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.weather-list > div {
+    min-width: 13rem;
+    margin-bottom: 1rem;
+}
+
+.weather-list > div > div {
+    padding: 1.5rem;
+}
+
+.weather-list > div:nth-child(2n) {
+    background-color: rgba(221,221,221, 0.5);
+}

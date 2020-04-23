@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+
+    <title>Ran Shaltiel - Your next teammate :) </title>
+
+    <link rel="stylesheet" type="text/css" href="../style/main.css">
+    <link rel="stylesheet" type="text/css" href="../style/home.css">
+    <link rel="stylesheet" type="text/css" href="../style/loader.css">
+</head>
+
+<body>
+    <div id="container">
+        <div class="menu">
+            <div class="create-toggle" data-name="theme" data-header="Theme" data-vals='{"light": "🌞", "dark": "🌛"}'>
+            </div>
+
+            <div class="create-toggle" data-name="scale" data-header="Scale"
+                data-vals='{"celsius": "℃", "fahrenheit": "℉"}'></div>
+        </div>
+        <!-- /.menu -->
+
+        <div class="header header-label">Herolo - Ran Weather Task</div>
+
+        <div class="header header-nav">
+            <div class="create-toggle" data-name="nav" data-vals='{"home": "🏠", "fav": "😍"}'></div>
+        </div>
+
+        <div class="main"></div>
+
+        <div class="footer">All rights reserved to the lawyers</div>
+    </div>
+    <!-- /#container -->
+
+    <script src="../scripts/weatherTask.js" type="module"></script>
+
+    <!--- templates -->
+
+    <div id="toggle-template" class="hide">
+        <div class="toggle" data-toggle-name="">
+            <h3></h3>
+        </div>
+    </div>
+
+    <div id="toggle-option-template" class="hide">
+        <a class="selected" data-toggle-val=""></a>
+    </div>
+
+    <template id="home-template">
+        <div class="home-container" id="home">
+            <div class="search-container">
+                <input id="input-search" list="search-data" placeholder="Search a location" autocomplete="off">
+                <datalist id="search-data"></datalist>
+            </div>
+            <div class="result-container">
+                <div class="result-header">
+                    <div class="basic-info">
+                        <div class="img"><img src="" alt="" /></div>
+                        <div class="name-temp">
+                            <p id="result-name"> -</p>
+                            <p id="result-temp">- ℃</p>
+                        </div>
+                    </div> <!-- /.basic info -->
+                    <div class="create-toggle" data-name="make-fav" data-vals='{"not-fav": "😐", "fav": "😍"}'></div>
+                </div> <!-- /.result-header -->
+
+                <div class="result-desciption"></div>
+
+                <div class="weather-list">
+                </div>
+
+            </div>
+            <!--/.result-container-->
+        </div>
+        <!--/.home-container-->
+    </template>
+    <!--/#home-->
+
+    <template id="fav-template">
+        <div class="fav-container" id="fav">
+            <div class="weather-list"></div>
+        </div>
+    </template>
+
+    <template id="weather-list-item-template">
+        <div>
+            <div class="item-name"></div>
+            <div><img /></div>
+            <div class="item-temp"></div>
+        </div>
+    </template>
+    <!-- /#weather-list-item -->
+
+    <template id="loader-template">
+        <div class="loader">
+            <pre></pre>
+        </div>
+    </template>
+    <!-- end templates -->
+
+</body>
+
+</html>
