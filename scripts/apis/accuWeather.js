@@ -38,7 +38,7 @@ class WeatherHandler {
 } // WeatherHandler
 
 class AccuWeather {
-    static ApiKey = 'GqE2gwiUXUPAVsdt05IthqkmM0kQWuWP';
+    static ApiKey = 'MGgtabuJOT7GxB8Fd0jcAXS4z00Md8lA';
 
     constructor(apiKey) {
         this.apiKey = apiKey || AccuWeather.ApiKey;

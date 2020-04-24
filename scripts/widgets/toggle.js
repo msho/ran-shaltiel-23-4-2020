@@ -19,6 +19,31 @@ class Toggle {
         this.changeCssClass(arrOptions, this.getToggleOption(arrOptions, val));
     }
 
+    createTogglesElements() {
+        const arrDomTogglePlaceholder = this.domContainer.getElementsByClassName('create-toggle');
+        const templateToggle = document.getElementById('toggle-template');
+        while (arrDomTogglePlaceholder[0]) {
+            const domTogglePlaceHolder = arrDomTogglePlaceholder[0];
+            const domNewToggle = templateToggle.firstElementChild.cloneNode(true);
+            const toggleData = domTogglePlaceHolder.dataset;
+            
+            domNewToggle.dataset.toggleName = toggleData.name;
+            this.createToggleHeader(domNewToggle, toggleData.header)
+            this.createToggleOptionElements(domNewToggle, toggleData.vals);
+
+            // This removes 'create-toggle' class thus removing an item from arrDomTogglePlaceholder as well
+            domTogglePlaceHolder.outerHTML = domNewToggle.outerHTML; 
+        } 
+    } // createToggleOptionElements
+
+    initTogglesEvents() {
+
+        this.arrDomToggles = this.domContainer.getElementsByClassName('toggle');
+        for (const domToggleContainer of this.arrDomToggles) {
+            this.handleToggleClicks(domToggleContainer);
+        }
+    } // initToggles
+
     getToggleOption(arrOptions, val) {
         for (const domOption of arrOptions) {
             if (domOption.dataset.toggleVal === val) {
@@ -38,31 +63,6 @@ class Toggle {
         }
         return null;
     }
-
-    initTogglesEvents() {
-
-        this.arrDomToggles = this.domContainer.getElementsByClassName('toggle');
-        for (const domToggleContainer of this.arrDomToggles) {
-            this.handleToggleClicks(domToggleContainer);
-        }
-    } // initToggles
-
-    createTogglesElements() {
-        const arrDomTogglePlaceholder = this.domContainer.getElementsByClassName('create-toggle');
-        const templateToggle = document.getElementById('toggle-template');
-        while (arrDomTogglePlaceholder[0]) {
-            const domTogglePlaceHolder = arrDomTogglePlaceholder[0];
-            const domNewToggle = templateToggle.firstElementChild.cloneNode(true);
-            const toggleData = domTogglePlaceHolder.dataset;
-            
-            domNewToggle.dataset.toggleName = toggleData.name;
-            this.createToggleHeader(domNewToggle, toggleData.header)
-            this.createToggleOptionElements(domNewToggle, toggleData.vals);
-
-            // This removes 'create-toggle' class thus removing an item from arrDomTogglePlaceholder as well
-            domTogglePlaceHolder.outerHTML = domNewToggle.outerHTML; 
-        } 
-    } // createToggleOptionElements
 
     createToggleHeader(domToggle, strHeader) {
         const domHeader = domToggle.querySelector('h3');

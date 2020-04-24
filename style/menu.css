@@ -30,6 +30,7 @@
 #container.mini-menu > .menu > #showHideMenu {
     left: 2rem;
     transform: rotate(180deg);
+    font-size: 2rem;
 }
 
 #container.mini-menu > .menu > .toggle {

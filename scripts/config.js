@@ -8,8 +8,6 @@ class Config {
         this.onThemeChanged = null;
 
         this.setDefaultIfNeeded();
-
-
     }
 
     get(key) {
