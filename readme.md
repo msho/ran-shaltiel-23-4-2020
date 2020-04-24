@@ -29,7 +29,7 @@ Luckly I could resist the temptation to work the dark theme for hours
 ### Nice caching & storage 
 But it is too easy with `localStorage` I must edmit
 
-### I used generator function
+### I used a generator function
 I know it is not a real show-off but it is rearly used and it is kinda nice feature
 
 ### Design
