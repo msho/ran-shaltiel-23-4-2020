@@ -2,6 +2,7 @@
 
 ## Usege
 Open 'pages/index.html with your favorite browser (if your fav browser version is older then 3 years, update/change your fav browser).
+[Demo link](https://herolo-ran.storage.googleapis.com/Herolo/pages/index.html)
 
 ## No External Libreries
 The original task is for React and advised to use as many libs as possible.
