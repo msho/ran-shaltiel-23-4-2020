@@ -1,6 +1,6 @@
 import { ApiCache } from '../helpers/storage.js';
 
-const baseApiUrl = 'http://dataservice.accuweather.com/';
+const baseApiUrl = 'https://dataservice.accuweather.com/';
 const locationApiUrl = `${baseApiUrl}locations/v1/cities/`;
 
 class WeatherHandler {
@@ -72,7 +72,7 @@ class AccuWeather {
 
         const xhr = new XMLHttpRequest();
         method = method || 'GET'
-        xhr.open(method, url);
+        xhr.open(method, url, true);
 
         return new Promise((ok, err) => {
             xhr.onload = (obj) => {

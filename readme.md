@@ -33,6 +33,7 @@ But it is too easy with `localStorage` I must edmit
 I know it is not a real show-off but it is rearly used and it is kinda nice feature
 
 ### Design
-Well, I design it all myself, did not use any external template! (I know it is not the much :( I tried my best though)
+Well, I design it all myself, did not use any external template! (I know it is not the much :( I tried my best though).
+Check it out in your smart phone & desktop screen!
 
 **Enjoy**
