@@ -2,11 +2,16 @@
     width: 100%;
 }
 
-#home>div {
+#home > div {
     text-align: center;
-    ;
     width: 80%;
     margin: 0 auto;
+}
+
+@media screen and (max-width:480px) {
+    #home > div {
+        width: 100%;
+    }
 }
 
 #home>.search-container {
@@ -15,7 +20,7 @@
 
 #home>.search-container input {
     width: calc(100% - 3rem);
-    font-size: 2rem;
+    font-size: 1.333rem;
     padding: 0.5rem 1.5rem;
     border-radius: 3px;
     margin: 0 0 1rem 0;
@@ -30,6 +35,16 @@
     padding: 2rem;
     border-radius: 5px;
 }
+@media screen and (max-width:480px) {
+    #home>.search-container input { 
+        width: calc(100% - 1rem);
+        padding: 0.5rem 0.5rem;
+    }
+
+    #home>.result-container>.result-header {
+        padding: 0rem;
+    }
+}
 
 #home>.result-container>.result-header>.basic-info {
     display: flex;
@@ -41,10 +56,10 @@
 
 #home>.result-container>.result-header>.basic-info>.img > img {
     align-self: center;
-    height: 10rem;
+    height: 6.66em;
 }
 
 #home > .result-container > .result-desciption{
-    font-size: 3rem;
-    padding: 3rem;
+    font-size: 2rem;
+    padding: 2rem;
 }

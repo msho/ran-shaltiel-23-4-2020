@@ -1,5 +1,5 @@
 body {
-    font-family: cursive, Open-Sans, sans-serif;
+    font-family: sans-serif;
 }
 body, div, p {
     margin: 0; padding: 0;
@@ -17,14 +17,14 @@ img {
         'header-label   header-label header-nav'
         'menu           main         main'
         'menu           footer       footer';
-    grid-template-rows: 5rem auto 2rem;
-    grid-template-columns: 9rem auto 12rem;
+    grid-template-rows: 3.333rem auto 1.333rem;
+    grid-template-columns: min-content auto auto;
 
     height: 100vh;
 }
 
 #container > div {
-    font-size: 2rem;
+    font-size: 1.333rem;
 }
 
 /** header **/
@@ -35,12 +35,13 @@ img {
 }
 #container > .header.header-label {
     grid-area: header-label;
-    font-size: 2.1rem;
+    font-size: 1.4rem;
 }
 
 #container > .header.header-nav {
     grid-area: header-nav;
-    font-size: 2.1rem;
+    font-size: 1.4rem;
+    text-align: right;
 }
 
 /** main **/
@@ -54,35 +55,4 @@ img {
     padding-left: 1rem;
     grid-area: footer;
     font-size: 0.8rem;
-}
-
-/** toggle **/
-.toggle {
-    padding-left: 1rem;
-    padding-bottom: 2rem;
-}
-.toggle a {
-    display: inline-block;
-    background-color: rgba(250, 150, 50, 0.1);
-    cursor: pointer;
-    border-radius: 100%;
-    padding: 0 0.2rem;
-}
-
-.toggle > a:last-child {
-    border-right: none;
-}
-
-.toggle > a.selected {
-    display: inline-block;
-    background-color: rgba(150, 220, 50, 0.5);
-    cursor: default;
-}
-
-.toggle > h3 {
-    font-size: 2.1rem;
-    margin: 0; padding: 0;
-    padding: 0.5rem;
-    margin: 0;
-    font-weight: 200;
 }

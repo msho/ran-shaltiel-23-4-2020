@@ -1,0 +1,41 @@
+
+.toggle, .toggle * {
+    transition: all 0.5s;
+}
+
+.toggle {
+    padding-left: 1rem;
+    padding-bottom: 2rem;
+}
+.toggle a {
+    display: inline-block;
+    background-color: rgba(250, 150, 50, 0.1);
+    cursor: pointer;
+    border-radius: 100%;
+    padding: 0 0.2rem;
+}
+
+.toggle > a:last-child {
+    border-right: none;
+}
+
+.toggle > a.selected {
+    display: inline-block;
+    background-color: rgba(150, 220, 50, 0.5);
+    cursor: default;
+}
+
+.toggle > h3 {
+    font-size: 1.4rem;
+    margin: 0; padding: 0;
+    padding: 0.5rem;
+    margin: 0;
+    font-weight: 200;
+}
+
+
+@media screen and (max-width:480px)  {
+    .toggle {
+        padding-left: 0.1rem;
+    }
+}

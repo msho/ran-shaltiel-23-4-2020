@@ -6,7 +6,6 @@ const locationApiUrl = `${baseApiUrl}locations/v1/cities/`;
 class WeatherHandler {
 
     static getIconImg(weatherId) {
-        //weatherId = (weatherId < 10) ? `0${weatherId}` : weatherId;
         return `https://www.accuweather.com/images/weathericons/${weatherId}.svg`;
     }
 
@@ -59,7 +58,8 @@ class AccuWeather {
     async getCurrentWeather(locationKey) {
         const apiPath = `${baseApiUrl}currentconditions/v1/${locationKey}?apikey=${this.apiKey}`;
         
-        return await this.requestApi(apiPath);
+        const arrCurrentWeather =  await this.requestApi(apiPath);
+        return arrCurrentWeather && arrCurrentWeather[0];
     }
 
     async getForecast(locationKey) {
@@ -77,7 +77,7 @@ class AccuWeather {
         return new Promise((ok, err) => {
             xhr.onload = (obj) => {
                 const reqResp = obj.target;
-
+                
                 if (reqResp.status < 200 || reqResp.status > 300) {
                     err(`AccuWeather returned status ${reqResp.status}`);
                 } else {

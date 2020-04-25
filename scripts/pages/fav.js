@@ -28,7 +28,7 @@ class Favorite extends PageBase {
             const domFav = domHelper.appendTemplate(templateFav, this.favContainer);
 
             this.accuWeather.getCurrentWeather(key).then(obj =>
-                this.setWeatherToLocation(domFav, name, obj[0]));
+                this.setWeatherToLocation(domFav, name, obj));
         }
     } // showFavorites
 
@@ -44,7 +44,7 @@ class Favorite extends PageBase {
         if (!this.isInit) {
             return;
         }
-        
+
         if (method === 'added') {
             const domItem = domHelper.appendTemplate('weather-list-item', this.favContainer);
             this.setWeatherToLocation(domItem, obj.name, obj.details);

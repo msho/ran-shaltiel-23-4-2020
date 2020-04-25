@@ -45,19 +45,26 @@ class Home extends PageBase {
     } // initElements
 
     initElementsEvents() {
-        this.domSearchInput.addEventListener('keyup', this.setSearchData.bind(this));
-        this.domSearchInput.addEventListener('change', this.onLocationSelected.bind(this));
+        this.domSearchInput.addEventListener('input', this.setSearchData.bind(this));
     }
 
     async setSearchData() {
         //occurs on search key press
-        if (this.domSearchInput.value.length < 1) {
+        const locationName = this.domSearchInput.value;
+        const locationKey = this.getLocationKey(locationName);
+
+        if (locationKey) {
+            this.setNewLocation(locationName, locationKey);
+            return;
+        }
+
+        if (locationName.length < 1) {
             return;
         }
 
         this.dataLoader.setLoaderToElem(this.domSearchInput.parentElement);
 
-        const arrCities = await this.accuWeather.getCities(this.domSearchInput.value);
+        const arrCities = await this.accuWeather.getCities(locationName);
         this.fillDataList(arrCities);
 
         this.dataLoader.clearLoader();
@@ -68,15 +75,6 @@ class Home extends PageBase {
         this.dataSeach.innerHTML = '';
         for (const objLocation of arrCities) {
             newElem('option', { value: objLocation.LocalizedName, key: objLocation.Key }, this.dataSeach)
-        }
-    }
-
-    onLocationSelected() {
-        const locationName = this.domSearchInput.value;
-        const locationKey = this.getLocationKey(locationName);
-
-        if (locationKey) {
-            this.setNewLocation(locationName, locationKey);
         }
     }
 
@@ -111,10 +109,10 @@ class Home extends PageBase {
 
         this.accuWeather.getCurrentWeather(key)
             .then(obj => {
-                this.setCurrentWeather(obj[0]);
+                this.setCurrentWeather(obj);
                 currentWeatherLoader.clearLoader();
 
-            }).catch(currentWeatherLoader.clearLoader);
+            }).catch(currentWeatherLoader.clearLoader.bind(currentWeatherLoader));
 
 
         this.accuWeather.getForecast(key).then(obj => this.setForecast(obj));
