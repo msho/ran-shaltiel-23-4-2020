@@ -56,3 +56,22 @@ img {
     grid-area: footer;
     font-size: 0.8rem;
 }
+
+.error {
+    background-color: crimson;
+    color: #fffdcb;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    padding: 1rem;
+    transform: translateX(-50%);
+
+    height: 0;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.error.show-error {
+    opacity: 1;
+    height: auto;
+}

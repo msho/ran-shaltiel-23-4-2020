@@ -23,10 +23,10 @@ const removeElem = function (domElem) {
     domElem.parentElement.removeChild(domElem);
 }
 
-const getTemplate = function(nameOrDom) {
+const getTemplate = function (nameOrDom) {
     if (typeof nameOrDom === 'string') {
         return document.getElementById(`${nameOrDom}-template`).content.cloneNode(true);
-    } else  {
+    } else {
         return nameOrDom.content.cloneNode(true);
     }
 }
@@ -43,4 +43,9 @@ const prependTemplate = function (nameOrDom, domContainer) {
     return domContainer.firstElementChild;
 }
 
-export { attr , newElem, appendTemplate, prependTemplate, getTemplate, removeElem };
+const addClassForAWhile = function (domElem, msTimeToDisplay, temporaryClass) {
+    domElem.classList.add(temporaryClass);
+    setTimeout(() => { domElem.classList.remove(temporaryClass); }, msTimeToDisplay)
+}
+
+export { attr, newElem, appendTemplate, prependTemplate, getTemplate, removeElem, addClassForAWhile };

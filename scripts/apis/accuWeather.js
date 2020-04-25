@@ -1,4 +1,5 @@
 import { ApiCache } from '../helpers/storage.js';
+import { showError } from '../helpers/errors.js';
 
 const baseApiUrl = 'https://dataservice.accuweather.com/';
 const locationApiUrl = `${baseApiUrl}locations/v1/cities/`;
@@ -37,7 +38,8 @@ class WeatherHandler {
 } // WeatherHandler
 
 class AccuWeather {
-    static ApiKey = 'MGgtabuJOT7GxB8Fd0jcAXS4z00Md8lA';
+    //static ApiKey = 'MGgtabuJOT7GxB8Fd0jcAXS4z00Md8lA';
+        static ApiKey = 'LZf4XK3kGHRgqhtutmnWn27uAjSXck8c';
 
     constructor(apiKey) {
         this.apiKey = apiKey || AccuWeather.ApiKey;
@@ -79,15 +81,24 @@ class AccuWeather {
                 const reqResp = obj.target;
                 
                 if (reqResp.status < 200 || reqResp.status > 300) {
+                    showError(`<p>AccuWeather Api error</p><p>return status ${reqResp.status}</p>`);
+
                     err(`AccuWeather returned status ${reqResp.status}`);
                 } else {
                     ok(JSON.parse(reqResp.response));
                 }
-            }
+            }; // onload
+            xhr.addEventListener("error", this.showError.bind(this));
+            xhr.addEventListener("abort", this.showError.bind(this));
 
             body ? xhr.send(body) : xhr.send();
         }); //promise returned
     } // requestApi
+
+    showError(e) {
+        console.error(e);
+        showError(`<p>AccuWeather Api error</p><p>return status ${e.target.status}</p>`);
+    }
 } // AccuWeather
 
 export default WeatherHandler;
